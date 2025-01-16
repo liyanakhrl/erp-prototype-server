@@ -20,9 +20,10 @@ import { SalesController } from './departments/sales/departments/sales.controlle
 import { SalesModule } from './departments/sales/departments/sales.module';
 import { OperationModule } from './departments/operations/departments/operations.module';
 import { SalesServices } from './departments/sales/departments/sales.service';
+import { ConfigModule } from '@nestjs/config';  // Import ConfigModule here
 
 @Module({
-  imports: [RoutesModule, DatabaseModule, AuthModule, FinanceModule, OperationModule, HrModule, ItModule, SalesModule, MarketingModule],
+  imports: [ConfigModule.forRoot(), RoutesModule, DatabaseModule, AuthModule, FinanceModule, OperationModule, HrModule, ItModule, SalesModule, MarketingModule],
   controllers: [FinanceController, OperationsController, HrController, ItController, SalesController, MarketingController],
   providers: [FinanceService, OperationsService, HrService, ItService, SalesServices, MarketingService], // Import the RoutesModule
 })
