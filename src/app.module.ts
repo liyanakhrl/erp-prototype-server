@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
 import { RoutesModule } from './routes/routes.module';
 import { DatabaseModule } from './database/database.module';
-import { AuthModule } from './auth/auth.module';
 import { FinanceController } from './departments/finance/departments/finance.controller';
 import { FinanceModule } from './departments/finance/departments/finance.module';
 import { FinanceService } from './departments/finance/departments/finance.service';
@@ -19,11 +18,11 @@ import { OperationsService } from './departments/operations/departments/operatio
 import { SalesController } from './departments/sales/departments/sales.controller';
 import { SalesModule } from './departments/sales/departments/sales.module';
 import { OperationModule } from './departments/operations/departments/operations.module';
-import { SalesServices } from './departments/sales/departments/sales.service';
-import { ConfigModule } from '@nestjs/config';  // Import ConfigModule here
+import { SalesServices } from './departments/sales/departments/sales.service'; 
+import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [ConfigModule.forRoot(), RoutesModule, DatabaseModule, AuthModule, FinanceModule, OperationModule, HrModule, ItModule, SalesModule, MarketingModule],
+  imports: [RoutesModule, DatabaseModule,  FinanceModule, OperationModule, HrModule, ItModule, SalesModule, MarketingModule, AuthModule],
   controllers: [FinanceController, OperationsController, HrController, ItController, SalesController, MarketingController],
   providers: [FinanceService, OperationsService, HrService, ItService, SalesServices, MarketingService], // Import the RoutesModule
 })
